@@ -1,0 +1,32 @@
+name: Demo GitHub Action
+
+# Define when the workflow should run
+on:
+  push:
+    branches:
+      - main  # Only runs on push to the main branch
+
+# Define the jobs that should be executed
+jobs:
+  build:
+    runs-on: ubuntu-latest  # This will run the job on the latest version of Ubuntu
+
+    steps:
+    # Step 1: Checkout the code from the repository
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Step 2: Set up Node.js environment (if using Node.js, for example)
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    # Step 3: Run a command (can be any shell command, e.g., installing dependencies)
+    - name: Install dependencies
+      run: |
+        echo "Hello, GitHub Actions!"  # This can be replaced with actual commands like `npm install` for Node.js projects.
+
+    # Step 4: Print a message (e.g., Hello World)
+    - name: Print Hello World
+      run: echo "Hello World from GitHub Actions!"
